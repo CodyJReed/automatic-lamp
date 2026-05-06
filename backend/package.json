@@ -14,10 +14,15 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@langchain/core": "^1.1.44",
+    "@langchain/google-genai": "^2.1.30",
+    "@langchain/mongodb": "^1.2.0",
     "@types/express": "^4.17.25",
-    "dotenv": "^17.2.3",
+    "dotenv": "^16.4.5",
     "express": "^4.21.2",
-    "zod": "^4.1.12"
+    "mongodb": "^7.2.0",
+    "zod": "^3.25.76"
   },
   "keywords": [],
   "author": "",
