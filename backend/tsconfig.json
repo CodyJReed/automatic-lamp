@@ -10,7 +10,10 @@
     "outDir": "dist",
     "rootDir": ".",
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
