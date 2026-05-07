@@ -15,4 +15,4 @@ if (!parsed.success) {
     process.exit(1)
 }
 
-export const env = Object.freeze(parsed)
+export const env = Object.freeze(parsed.data)
