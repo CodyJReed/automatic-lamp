@@ -5,13 +5,12 @@ import * as z from "zod";
 import { tool } from "langchain";
 import { retrieveRelevantChunks } from "@/kb/05_retrieval";
 
+const DEFAULT_NAMESPACE = "default";
+
 export const kbSearchTool = tool(
-  async ({ question, namespace = "default" }) => {
-    const { docs, confidence } = await retrieveRelevantChunks(
-      question,
-      namespace,
-      2,
-    );
+  async ({ question }: { question: string }) => {
+    const ns = DEFAULT_NAMESPACE;
+    const { docs, confidence } = await retrieveRelevantChunks(question, ns, 2);
 
     const contexts = docs.map((doc) => {
       const source = (doc?.metadata?.source as string) || "unknown_source";
@@ -34,7 +33,7 @@ export const kbSearchTool = tool(
 
     return {
       confidence,
-      namespace,
+      ns,
       contexts,
     };
   },
@@ -47,9 +46,8 @@ export const kbSearchTool = tool(
         .describe(
           "User's question or follow up that must be answered from docs",
         ),
-      namespace: z.string().describe("KB namespace to query"),
     }),
   },
 );
 
-export const agentTools = [ kbSearchTool ];
+export const agentTools = [kbSearchTool];
